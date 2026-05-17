@@ -76,7 +76,7 @@ jobs:
         working-directory: x-neu
         env:
           # Next.js SMTP config — secrets not needed for CI build check
-          SMTP_USER: ci@xneu.local
+          SMTP_USER: ci@xiha.local
           SMTP_PASS: ci_placeholder
 
       - name: Upload build artifact

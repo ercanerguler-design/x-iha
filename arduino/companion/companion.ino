@@ -1,6 +1,6 @@
 /*
  * ╔══════════════════════════════════════════════════════════════════╗
- * ║           X-NEU IHA — Arduino Companion Computer               ║
+ * ║           X-IHA — Arduino Companion Computer                  ║
  * ║           MAVLink Telemetri Köprüsü + Payload Kontrolü         ║
  * ╚══════════════════════════════════════════════════════════════════╝
  *

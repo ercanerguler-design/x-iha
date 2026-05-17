@@ -109,14 +109,14 @@ jobs:
       - name: Create Release
         uses: softprops/action-gh-release@v2
         with:
-          name: X-NEU GCS ${{ github.ref_name }}
+          name: X-IHA GCS ${{ github.ref_name }}
           body: |
-            ## X-NEU GCS ${{ github.ref_name }}
+            ## X-IHA GCS ${{ github.ref_name }}
 
             ### Kurulum
-            - **Windows**: `X-NEU-GCS-Setup-*.exe` dosyasını çalıştırın
-            - **Linux**: `X-NEU-GCS-*.AppImage` dosyasına çalıştırma izni verip çalıştırın
-            - **macOS**: `X-NEU-GCS-*.dmg` dosyasını açıp Applications klasörüne sürükleyin
+            - **Windows**: `X-IHA-GCS-Setup-*.exe` dosyasını çalıştırın
+            - **Linux**: `X-IHA-GCS-*.AppImage` dosyasına çalıştırma izni verip çalıştırın
+            - **macOS**: `X-IHA-GCS-*.dmg` dosyasını açıp Applications klasörüne sürükleyin
 
             ### Bağlantı
             - Serial: ArduPilot/Pixhawk TELEM portu (57600 baud)
