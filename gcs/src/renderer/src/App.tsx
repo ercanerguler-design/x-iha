@@ -116,7 +116,7 @@ function App(): React.JSX.Element {
           fontFamily: 'monospace', fontSize: 13, fontWeight: 'bold', color: '#00d4ff',
           letterSpacing: '0.2em',
         }}>
-          X-NEU <span style={{ fontSize: 9, color: '#6b7280', letterSpacing: '0.3em' }}>GCS v1.0</span>
+          X-IHA <span style={{ fontSize: 9, color: '#6b7280', letterSpacing: '0.3em' }}>GCS v1.0</span>
         </div>
 
         {/* Tabs */}

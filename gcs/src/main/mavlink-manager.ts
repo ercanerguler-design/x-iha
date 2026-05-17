@@ -142,10 +142,10 @@ export class MavLinkManager extends EventEmitter {
 
   private encryptFrame(data: Buffer): Buffer {
     if (!this.encKey) return data
-    // 16-byte IV: first 8 bytes = counter (big-endian), last 8 bytes = 'XNEU' magic
+    // 16-byte IV: first 8 bytes = counter (big-endian), last 8 bytes = 'XIHA' magic
     const iv = Buffer.alloc(16, 0)
     iv.writeBigUInt64BE(BigInt(this.encCounter++), 0)
-    iv.write('XNEU1337', 8, 'ascii')
+    iv.write('XIHA1337', 8, 'ascii')
     const cipher = createCipheriv('aes-256-ctr', this.encKey, iv)
     const encrypted = Buffer.concat([cipher.update(data), cipher.final()])
     return Buffer.concat([iv, encrypted])
