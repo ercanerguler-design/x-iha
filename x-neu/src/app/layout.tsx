@@ -21,7 +21,7 @@ const shareTechMono = Share_Tech_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "X-NEU | Loitering Munition System",
+  title: "X-IHA | Loitering Munition System",
   description: "Next-generation autonomous loitering munition system for modern defense operations.",
   keywords: ["UAV", "loitering munition", "defense", "autonomous", "kamikaze drone"],
 };

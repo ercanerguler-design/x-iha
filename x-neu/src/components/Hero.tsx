@@ -93,9 +93,9 @@ export default function Hero() {
           <div className="relative mb-2">
             <h1
               className="font-orbitron text-7xl lg:text-8xl font-black text-white glitch-text leading-none"
-              data-text="X-NEU"
+              data-text="X-IHA"
             >
-              X-NEU
+              X-IHA
             </h1>
           </div>
 

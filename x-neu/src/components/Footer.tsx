@@ -38,7 +38,7 @@ export default function Footer() {
 
           {/* Copyright */}
           <div className="font-mono-tech text-[10px] text-gray-700 tracking-widest text-center">
-            © {year} X-NEU DEFENSE SYSTEMS
+            © {year} X-IHA DEFENSE SYSTEMS
           </div>
         </div>
 

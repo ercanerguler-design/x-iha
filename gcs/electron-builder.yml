@@ -1,6 +1,6 @@
-appId: com.xneu.gcs
-productName: X-NEU GCS
-copyright: Copyright © 2026 X-NEU Aerospace
+appId: com.xiha.gcs
+productName: X-IHA GCS
+copyright: Copyright © 2026 X-IHA Aerospace
 
 directories:
   output: dist
@@ -22,15 +22,15 @@ asarUnpack:
 
 # ── Windows ───────────────────────────────────────
 win:
-  executableName: X-NEU-GCS
+  executableName: X-IHA-GCS
   target:
     - target: nsis
       arch: [x64]
 
 nsis:
-  artifactName: X-NEU-GCS-Setup-${version}.${ext}
-  shortcutName: X-NEU GCS
-  uninstallDisplayName: X-NEU GCS
+  artifactName: X-IHA-GCS-Setup-${version}.${ext}
+  shortcutName: X-IHA GCS
+  uninstallDisplayName: X-IHA GCS
   createDesktopShortcut: always
   oneClick: false
   allowToChangeInstallationDirectory: true
@@ -49,23 +49,23 @@ mac:
       arch: [x64, arm64]
 
 dmg:
-  artifactName: X-NEU-GCS-${version}.${ext}
+  artifactName: X-IHA-GCS-${version}.${ext}
 
 # ── Linux ─────────────────────────────────────────
 linux:
   target:
     - AppImage
-  maintainer: x-neu@xneu.com
+  maintainer: info@x-iha.com
   category: Utility
-  description: X-NEU İnsansız Hava Aracı Yer Kontrol İstasyonu
+  description: X-IHA İnsansız Hava Aracı Yer Kontrol İstasyonu
 
 appImage:
-  artifactName: X-NEU-GCS-${version}.${ext}
+  artifactName: X-IHA-GCS-${version}.${ext}
 
 npmRebuild: true
 
 # ── Güncelleme Sunucusu (opsiyonel) ───────────────
 publish:
   provider: github
-  owner: x-neu
+  owner: ercanerguler-design
   repo: iha
