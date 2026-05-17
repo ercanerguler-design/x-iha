@@ -26,12 +26,13 @@ export async function POST(req: NextRequest) {
     });
 
     await transporter.sendMail({
-      from: `"X-NEU Demo" <${process.env.SMTP_USER}>`,
+      from: `"X-IHA Demo" <${process.env.SMTP_USER}>`,
+
       to: 'sce@scegrup.com',
-      subject: `[X-NEU] Demo Talebi — ${company} / ${name}`,
+      subject: `[X-IHA] Demo Talebi — ${company} / ${name}`,
       html: `
         <div style="font-family:monospace;background:#050508;color:#e8e8e8;padding:24px;border:1px solid #00d4ff;max-width:600px;">
-          <h2 style="color:#00d4ff;margin-top:0;font-family:sans-serif;">X-NEU — Demo Talebi</h2>
+          <h2 style="color:#00d4ff;margin-top:0;font-family:sans-serif;">X-IHA — Demo Talebi</h2>
           <table style="width:100%;border-collapse:collapse;border-top:1px solid #1a2030;">
             <tr><td style="padding:8px 12px;color:#6b7280;width:110px;">İsim</td><td style="padding:8px 12px;">${name}</td></tr>
             <tr style="background:#0a0a12;"><td style="padding:8px 12px;color:#6b7280;">Şirket</td><td style="padding:8px 12px;">${company}</td></tr>
@@ -42,7 +43,7 @@ export async function POST(req: NextRequest) {
             <p style="color:#6b7280;margin:0 0 8px;">Mesaj:</p>
             <p style="margin:0;white-space:pre-wrap;">${message}</p>
           </div>
-          <p style="margin-top:20px;font-size:11px;color:#444;">Bu e-posta X-NEU landing page üzerinden otomatik gönderilmiştir.</p>
+          <p style="margin-top:20px;font-size:11px;color:#444;">Bu e-posta X-IHA landing page üzerinden otomatik gönderilmiştir.</p>
         </div>
       `,
     });

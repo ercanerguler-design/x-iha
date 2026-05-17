@@ -14,7 +14,7 @@ export default function Footer() {
               <div className="absolute inset-0 border border-[#ff4d00] rotate-[30deg] scale-50 opacity-70" />
             </div>
             <span className="font-orbitron font-black text-sm text-white tracking-widest">
-              X<span className="text-[#00d4ff]">-</span>NEU
+              X<span className="text-[#00d4ff]">-</span>IHA
             </span>
           </div>
 

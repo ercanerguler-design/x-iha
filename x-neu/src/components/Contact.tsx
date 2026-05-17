@@ -73,7 +73,7 @@ export default function Contact() {
             </h2>
             <div className="w-20 h-px bg-[#00d4ff] mb-8" />
             <p className="font-rajdhani text-base text-gray-400 leading-relaxed mb-8">
-              X-NEU sistemine ilişkin demo, teknik brifing veya tedarik sorgulamaları için formu doldurun.
+              X-IHA sistemine ilişkin demo, teknik brifing veya tedarik sorgulamaları için formu doldurun.
               Yetkili satış temsilcimiz 24 saat içinde sizinle iletişime geçecektir.
             </p>
 
