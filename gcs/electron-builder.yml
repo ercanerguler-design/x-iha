@@ -1,0 +1,71 @@
+appId: com.xneu.gcs
+productName: X-NEU GCS
+copyright: Copyright © 2026 X-NEU Aerospace
+
+directories:
+  output: dist
+  buildResources: build
+
+files:
+  - '!**/.vscode/*'
+  - '!src/*'
+  - '!electron.vite.config.{js,ts,mjs,cjs}'
+  - '!{.eslintcache,eslint.config.mjs,.prettierignore,.prettierrc.yaml,dev-app-update.yml,CHANGELOG.md,README.md}'
+  - '!{.env,.env.*,.npmrc,pnpm-lock.yaml}'
+  - '!{tsconfig.json,tsconfig.node.json,tsconfig.web.json}'
+
+# serialport native binary'yi asar dışında tut
+asarUnpack:
+  - resources/**
+  - '**/node_modules/@serialport/**'
+  - '**/node_modules/serialport/**'
+
+# ── Windows ───────────────────────────────────────
+win:
+  executableName: X-NEU-GCS
+  target:
+    - target: nsis
+      arch: [x64]
+
+nsis:
+  artifactName: X-NEU-GCS-Setup-${version}.${ext}
+  shortcutName: X-NEU GCS
+  uninstallDisplayName: X-NEU GCS
+  createDesktopShortcut: always
+  oneClick: false
+  allowToChangeInstallationDirectory: true
+
+# ── macOS ─────────────────────────────────────────
+mac:
+  entitlementsInherit: build/entitlements.mac.plist
+  extendInfo:
+    - NSCameraUsageDescription: Application requests access to the device's camera.
+    - NSMicrophoneUsageDescription: Application requests access to the device's microphone.
+    - NSDocumentsFolderUsageDescription: Application requests access to the user's Documents folder.
+    - NSDownloadsFolderUsageDescription: Application requests access to the user's Downloads folder.
+  notarize: false
+  target:
+    - target: dmg
+      arch: [x64, arm64]
+
+dmg:
+  artifactName: X-NEU-GCS-${version}.${ext}
+
+# ── Linux ─────────────────────────────────────────
+linux:
+  target:
+    - AppImage
+  maintainer: x-neu@xneu.com
+  category: Utility
+  description: X-NEU İnsansız Hava Aracı Yer Kontrol İstasyonu
+
+appImage:
+  artifactName: X-NEU-GCS-${version}.${ext}
+
+npmRebuild: true
+
+# ── Güncelleme Sunucusu (opsiyonel) ───────────────
+publish:
+  provider: github
+  owner: x-neu
+  repo: iha

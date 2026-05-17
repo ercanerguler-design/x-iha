@@ -1,0 +1,128 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+
+permissions:
+  contents: write
+
+jobs:
+  # ── GCS Windows installer (.exe NSIS) ────────────────────────────────────
+  dist-windows:
+    name: Package GCS — Windows
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: gcs/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+        working-directory: gcs
+
+      - name: Build + Package (Windows)
+        run: npm run build:win
+        working-directory: gcs
+
+      - name: Upload Windows artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: gcs-windows
+          path: gcs/dist/*.exe
+          retention-days: 14
+
+  # ── GCS Linux AppImage ───────────────────────────────────────────────────
+  dist-linux:
+    name: Package GCS — Linux
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: gcs/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+        working-directory: gcs
+
+      - name: Build + Package (Linux)
+        run: npm run build:linux
+        working-directory: gcs
+
+      - name: Upload Linux artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: gcs-linux
+          path: gcs/dist/*.AppImage
+          retention-days: 14
+
+  # ── GCS macOS DMG ────────────────────────────────────────────────────────
+  dist-mac:
+    name: Package GCS — macOS
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: gcs/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+        working-directory: gcs
+
+      - name: Build + Package (macOS)
+        run: npm run build:mac
+        working-directory: gcs
+
+      - name: Upload macOS artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: gcs-mac
+          path: gcs/dist/*.dmg
+          retention-days: 14
+
+  # ── GitHub Release ───────────────────────────────────────────────────────
+  create-release:
+    name: Create GitHub Release
+    needs: [dist-windows, dist-linux, dist-mac]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download all artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: artifacts/
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
+        with:
+          name: X-NEU GCS ${{ github.ref_name }}
+          body: |
+            ## X-NEU GCS ${{ github.ref_name }}
+
+            ### Kurulum
+            - **Windows**: `X-NEU-GCS-Setup-*.exe` dosyasını çalıştırın
+            - **Linux**: `X-NEU-GCS-*.AppImage` dosyasına çalıştırma izni verip çalıştırın
+            - **macOS**: `X-NEU-GCS-*.dmg` dosyasını açıp Applications klasörüne sürükleyin
+
+            ### Bağlantı
+            - Serial: ArduPilot/Pixhawk TELEM portu (57600 baud)
+            - UDP: SITL simülasyon (varsayılan port 14550)
+          generate_release_notes: true
+          files: |
+            artifacts/gcs-windows/*.exe
+            artifacts/gcs-linux/*.AppImage
+            artifacts/gcs-mac/*.dmg

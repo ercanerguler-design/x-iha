@@ -1,0 +1,21 @@
+{
+  "name": "@x-neu/iha",
+  "version": "1.0.0",
+  "private": true,
+  "description": "X-NEU IHA — Mono-repo: Landing Page + Ground Control Station",
+  "scripts": {
+    "dev:web": "npm run dev --prefix x-neu",
+    "dev:gcs": "npm run dev --prefix gcs",
+    "build:web": "npm run build --prefix x-neu",
+    "build:gcs": "npm run build --prefix gcs",
+    "dist:win": "npm run build:win --prefix gcs",
+    "dist:linux": "npm run build:linux --prefix gcs",
+    "dist:mac": "npm run build:mac --prefix gcs",
+    "typecheck": "npm run typecheck --prefix gcs",
+    "lint": "npm run lint --prefix gcs"
+  },
+  "engines": {
+    "node": ">=20.0.0",
+    "npm": ">=10.0.0"
+  }
+}
